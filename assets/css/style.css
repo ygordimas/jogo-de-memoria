@@ -15,14 +15,14 @@ body {
     font-family: 'Fredoka', sans-serif;
 }
 
-.memory-game {
+.jogo-de-memoria {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.memory-game-board {
+.jogo-de-memoria__tabuleiro {
     /* border: 1px solid black; */
     /* width: 48rem;
     height: 75%; */
@@ -59,7 +59,7 @@ body {
 
 /*-- CARTAS --*/
 
-.memory-card {
+.carta {
     width: 10rem;
     height: 10rem;
     /*border: 1px dashed orangered;*/
@@ -71,7 +71,7 @@ body {
     transition: transform .5s;
 }
 
-.memory-card-coletado {
+.carta--coletada {
     width: 100%;
     height: 100%;
     /*z-index: 30;*/
@@ -91,22 +91,22 @@ body {
     border: var(--tom-escuro) solid 1px;
 }
 
-.memory-card-coletado i {
+.carta--coletada i {
     color: var(--tom-escuro);
 }
 
-.memory-card-coletado-ativo {
+.carta--coletada-ativo {
     /*visibility: visible;*/
     opacity: .5;
     transition: opacity 1s;
 }
 
-.memory-card:active{
+.carta:active{
     transform: scale(.97);
     transition: transform .2s;
 }
 
-.front-face, .back-face {
+.carta--frente, .carta--costas {
     width: 100%;
     height: 100%;
     color: var(--bege);
@@ -130,13 +130,13 @@ body {
     
 }
 
-.back-face i {
+.carta--costas i {
     align-self: center;
     backface-visibility: inherit;
     
 }
 
-.front-face {
+.carta--frente {
     object-fit: cover;
     transform: rotateY(180deg);
     background: rgb(242,175,92);
@@ -146,11 +146,11 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2af5c",endColorstr="#c8c39d",GradientType=1); 
 }
 
-.memory-card.flipa { 
+.carta.flipa { 
     transform: rotateY(-180deg);
 }
 
-.memory-card.desflipa {
+.carta.desflipa {
     transform: rotateY(180deg);
 }
 
@@ -186,19 +186,6 @@ body {
     font-size: var(--fonte-titulos);
     position: relative;
 }
-
-
-
-.sideboard-titulo i {
-    
-    
-    /* font-size: 1.7rem; */
-    /* border-radius: 100%;
-    margin-right: .3rem;
-    padding: 2px;
-    color: var(--bege); */
-    
-} 
 
 .sideboard-cartas {
     background: repeating-conic-gradient(rgba(200, 195, 157, 0.2) 0% 25%, transparent 0% 50%) 
@@ -311,11 +298,6 @@ body {
     
 }
 
-.tentativas-score p {
-
-
-}
-
 .sideboard-icon { 
     background-color: var(--tom-escuro);
     height: var(--altura-titulos);
@@ -359,9 +341,6 @@ body {
     opacity: 0;
     transition: opacity 1s;
 }
-
-
-
 
 #restart {
     height: 5rem;

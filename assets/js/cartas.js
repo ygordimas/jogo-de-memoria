@@ -1,5 +1,5 @@
 //fazer uma lista de todos os elementos carta
-const cartas = document.querySelectorAll('.memory-card');
+const cartas = document.querySelectorAll('.carta');
 let flipou = false;
 let primeiraCarta, segundaCarta;
 let lockBoard = false;
@@ -56,8 +56,8 @@ function removeCartas() {
 }
 
 function cartaDesaparece() {
-    const frontPrimeira = primeiraCarta.querySelector('.front-face');
-    const frontSegunda = segundaCarta.querySelector('.front-face');
+    const frontPrimeira = primeiraCarta.querySelector('.carta--frente');
+    const frontSegunda = segundaCarta.querySelector('.carta--frente');
     
 
     setTimeout(() => {
@@ -80,8 +80,8 @@ function vistoMatch() {
     const vistoSegunda = segundaCarta.lastElementChild;
 
     setTimeout(() => {
-        vistoPrimeira.classList.add('memory-card-coletado-ativo');
-        vistoSegunda.classList.add('memory-card-coletado-ativo');
+        vistoPrimeira.classList.add('carta--coletada-ativo');
+        vistoSegunda.classList.add('carta--coletada-ativo');
     }, 500)
 
 }
@@ -111,12 +111,12 @@ function restart() {
 
     cartas.forEach(carta => {
         let visto = carta.lastElementChild;
-        let cartaImagem = carta.querySelector('.front-face');
+        let cartaImagem = carta.querySelector('.carta--frente');
 
         carta.classList.remove('flipa');
         cartaImagem.classList.remove('opacidade')
         cartaImagem.classList.remove('tamanho')
-        visto.classList.remove('memory-card-coletado-ativo');
+        visto.classList.remove('carta--coletada-ativo');
         carta.addEventListener('click', flipaCarta);
 
         

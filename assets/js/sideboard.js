@@ -3,7 +3,7 @@ let sideboardCartas = document.querySelector('.sideboard-cartas');
 
 function adicionaCartasColetadas() {
     let novaCarta = document.createElement('div');
-    let imagemReferencia = primeiraCarta.querySelector('.front-face').cloneNode(false);
+    let imagemReferencia = primeiraCarta.querySelector('.carta--frente').cloneNode(false);
     
 
     setTimeout(() => {

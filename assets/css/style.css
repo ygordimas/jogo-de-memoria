@@ -1,0 +1,406 @@
+:root {
+    --tom-escuro: #817964;
+    --tom-claro: #C8C39D;
+    --bege: #F2E0BD;
+    --laranja-claro: #F2AF5C;
+    --laranja-escuro: #F28627;
+    --altura-titulos: 2rem;
+    --fonte-titulos: 1.5rem;
+}
+
+body {
+    height: 100vh;
+    background: var(--bege);
+    display: flex;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.memory-game {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.memory-game-board {
+    /* border: 1px solid black; */
+    /* width: 48rem;
+    height: 75%; */
+    width: 100%;
+    height: 100%;
+    flex-grow: 0;
+    
+    /* display: flex;
+    flex-wrap: wrap;
+    align-content:center;
+    justify-content: center; */
+    /* padding: 100px; */
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto;
+    gap: .2rem;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+
+    perspective: 1000px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    align-self: center;
+    position: relative;
+
+    background: rgb(242,224,189);
+    background: -moz-radial-gradient(circle, rgba(242,224,189,1) 0%, rgba(242,175,92,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(242,224,189,1) 0%, rgba(242,175,92,1) 100%);
+    background: radial-gradient(circle, rgba(242,224,189,1) 0%, rgba(242,175,92,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2e0bd",endColorstr="#f2af5c",GradientType=1); 
+}
+
+/*-- CARTAS --*/
+
+.memory-card {
+    width: 10rem;
+    height: 10rem;
+    /*border: 1px dashed orangered;*/
+    position: relative;
+    box-sizing: border-box;
+    /* margin: 2.5px; */
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+.memory-card-coletado {
+    width: 100%;
+    height: 100%;
+    /*z-index: 30;*/
+    background: var(--laranja-claro);
+    background: -moz-radial-gradient(circle, var(--bege) 0%, var(--laranja-escuro) 100%);
+    background: -webkit-radial-gradient(circle, var(--bege) 0%, var(--laranja-escuro) 100%);
+    background: radial-gradient(circle, var(--bege) 0%, var(--laranja-escuro) 100%); 
+    position: absolute;
+    border-radius: 5px;
+    /*visibility: hidden;*/
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    transform: rotateY(180deg);
+    border: var(--tom-escuro) solid 1px;
+}
+
+.memory-card-coletado i {
+    color: var(--tom-escuro);
+}
+
+.memory-card-coletado-ativo {
+    /*visibility: visible;*/
+    opacity: .5;
+    transition: opacity 1s;
+}
+
+.memory-card:active{
+    transform: scale(.97);
+    transition: transform .2s;
+}
+
+.front-face, .back-face {
+    width: 100%;
+    height: 100%;
+    color: var(--bege);
+    background: rgb(242,134,39);
+    background: -moz-radial-gradient(circle, rgba(242,134,39,1) 0%, rgba(242,224,189,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(242,134,39,1) 0%, rgba(242,224,189,1) 100%);
+    background: radial-gradient(circle, rgba(242,134,39,1) 0%, rgba(242,224,189,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f28627",endColorstr="#f2e0bd",GradientType=1); 
+    position: absolute;
+    box-sizing: border-box;
+    padding: 8px;
+    border: var(--laranja-claro) solid 1px;
+    border-radius: 5px;
+    backface-visibility: hidden;
+
+    text-align: center;
+    font-size: 8rem;
+    display: flex;
+    justify-content: center;
+    transform-style: preserve-3d;
+    
+}
+
+.back-face i {
+    align-self: center;
+    backface-visibility: inherit;
+    
+}
+
+.front-face {
+    object-fit: cover;
+    transform: rotateY(180deg);
+    background: rgb(242,175,92);
+    background: -moz-linear-gradient(170deg, rgba(242,175,92,1) 0%, rgba(242,224,189,1) 35%, rgba(200,195,157,1) 100%);
+    background: -webkit-linear-gradient(170deg, rgba(242,175,92,1) 0%, rgba(242,224,189,1) 35%, rgba(200,195,157,1) 100%);
+    background: linear-gradient(170deg, rgba(242,175,92,1) 0%, rgba(242,224,189,1) 35%, rgba(200,195,157,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2af5c",endColorstr="#c8c39d",GradientType=1); 
+}
+
+.memory-card.flipa { 
+    transform: rotateY(-180deg);
+}
+
+.memory-card.desflipa {
+    transform: rotateY(180deg);
+}
+
+.opacidade {
+    /*z-index: -10;*/
+    opacity: 0;
+    transform: scale(0.2);
+    transition: all .8s;
+}
+/*-- FIM DAS CARTAS --*/
+
+/*-- SIDEBOARD HEADER --*/
+.sideboard {
+    width: 25%;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column; 
+    border-left: var(--tom-escuro) solid 1px;
+}
+
+.sideboard-titulo {
+    height: var(--altura-titulos);
+    background-color: var(--laranja-claro);
+    color: var(--tom-escuro);
+    justify-self: flex-start;
+    box-sizing: border-box;
+    border-top: var(--tom-escuro) solid 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 400;
+    font-size: var(--fonte-titulos);
+    position: relative;
+}
+
+
+
+.sideboard-titulo i {
+    
+    
+    /* font-size: 1.7rem; */
+    /* border-radius: 100%;
+    margin-right: .3rem;
+    padding: 2px;
+    color: var(--bege); */
+    
+} 
+
+.sideboard-cartas {
+    background: repeating-conic-gradient(rgba(200, 195, 157, 0.2) 0% 25%, transparent 0% 50%) 
+              50% / 50px 50px;
+    /* background-color:  var(--bege); */
+    /* position: relative; */
+    padding-top: 120px;
+    /* box-sizing: border-box; */
+    /* min-height: 65%; */
+    justify-self: flex-start;
+    align-content: center;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    border-top: var(--tom-escuro) solid 6px;
+}
+
+.sideboard-carta {
+    background: rgb(242,175,92);
+    background: -moz-linear-gradient(170deg, rgba(242,175,92,1) 0%, rgba(242,224,189,1) 35%, rgba(200,195,157,1) 100%);
+    background: -webkit-linear-gradient(170deg, rgba(242,175,92,1) 0%, rgba(242,224,189,1) 35%, rgba(200,195,157,1) 100%);
+    background: linear-gradient(170deg, rgba(242,175,92,1) 0%, rgba(242,224,189,1) 35%, rgba(200,195,157,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2af5c",endColorstr="#c8c39d",GradientType=1); 
+    width: 10rem;
+    height: 10rem;
+    z-index: 1;
+    border-radius: 5px;
+    opacity: 1;
+    /* position: absolute; */
+    /* left: 50%;
+    transform: translateX(-50%); */
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 8px;
+    box-shadow: 0 -4px 7px 2px rgb(242, 134, 39, .4);
+    
+}
+
+.sideboard-carta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.novaCartaAnim {
+    animation: novaCartaPulo .6s;
+}
+
+@keyframes novaCartaPulo {
+    0% {transform: scale(0);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+/*-- FIM DO SIDEBOARD HEADER--*/
+
+/*-- SIDEBOARD FOOTER --*/
+.sideboard-score {
+    background-color: var(--tom-claro);
+    /* height: 25%; */
+    justify-self: flex-end;
+    box-sizing: border-box;
+    /* border: 10px solid white; */
+    /* padding: 3px; */
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.tentativas-titulo {
+    width: 100%;
+    height: var(--altura-titulos);
+    /* line-height: 1.3rem; */
+    font-size: var(--fonte-titulos);
+    font-weight: 400;
+    letter-spacing: .05rem;
+    /* text-align: center; */
+    background-color: var(--laranja-claro);
+    border-top: var(--tom-escuro) solid 1px;
+    border-bottom: var(--tom-escuro) solid 6px;
+    justify-self: flex-start;
+    align-self: center;
+    /* box-sizing: border-box; */
+    /* align-self: flex-start; */
+    color: var(--tom-escuro);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.tentativas-score {
+    
+    background-color: var(--bege);
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    font-weight: 400;
+    font-size: 3.2rem;
+    color: var(--laranja-escuro);
+    font-weight: 700;
+    /* padding: 40px; */
+    margin: 20px;
+    
+}
+
+.tentativas-score p {
+
+
+}
+
+.sideboard-icon { 
+    background-color: var(--tom-escuro);
+    height: var(--altura-titulos);
+    width: 4rem;
+    text-align: center;
+    align-self: center;
+    margin-right: 0.3rem;
+    /* padding: 2px; */
+    color: var(--bege);
+
+}
+
+.sideboard-icon i {
+    vertical-align: middle;
+}
+
+/* RESETA */
+
+.resetar-board {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+    background: rgb(242,224,189);
+    background: -moz-radial-gradient(circle, rgba(242,224,189,1) 0%, rgba(242,224,189,0.75) 50%, rgba(242,134,39,0.3) 100%);
+    background: -webkit-radial-gradient(circle, rgba(242,224,189,1) 0%, rgba(242,224,189,0.75) 50%, rgba(242,134,39,0.3) 100%);
+    background: radial-gradient(circle, rgba(242,224,189,1) 0%, rgba(242,224,189,0.75) 50%, rgba(242,134,39,0.3) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2e0bd",endColorstr="#f28627",GradientType=1); 
+    
+    /* border-radius: 100%; */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* border: var(--tom-escuro) solid 1px; */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+
+
+
+#restart {
+    height: 5rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-transform: lowercase;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 0;
+    margin-top: 10px;
+    padding: 0 20px;
+    font-style: inherit;
+    outline: 0px;
+    border: none;
+    /* border-bottom: #817964 solid 10px; */
+    background-color: var(--laranja-escuro);
+    color: var(--bege);
+    transition: transform .2s;
+}
+
+#restart:hover {
+    background-color: var(--tom-escuro);
+    transform: scale(1.05);
+}
+
+.resetar-board-visivel {
+    visibility: visible;
+    opacity: 1;
+}
+
+.score-final {
+    width: 30%;
+    background-color: var(--laranja-escuro);
+    text-align: center;
+    font-size: 2rem;
+    border: var(--tom-claro) solid 1px;
+    box-sizing: border-box;
+    letter-spacing: .02rem;
+    font-weight: 700;
+    padding: 2rem;
+    color: var(--bege);
+}

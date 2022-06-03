@@ -1,5 +1,7 @@
 let cartasColetadas = [];
-let sideboardCartas = document.querySelector(".sideboard-cartas");
+const sideboardCartas = document.querySelector(".sideboard-cartas");
+const sideboardBotao = document.getElementById("sideboard-botao");
+const sideboardBackground = document.getElementById("sideboard-background");
 
 function adicionaCartasColetadas() {
   let novaCartaPlaceholder = document.createElement("div");
@@ -45,3 +47,11 @@ function adicionaCartasColetadas() {
 
 //     }
 // }
+
+sideboardBotao.addEventListener("click", () => {
+  sideboardBotao.parentElement.classList.toggle("sideboard-visivel");
+  sideboardBackground.classList.toggle("sideboard-background-visivel");
+  for (let i = 0; i < sideboardBotao.children.length; i++) {
+    sideboardBotao.children[i].classList.toggle("sideboard-icon-visivel");
+  }
+});

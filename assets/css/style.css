@@ -746,12 +746,25 @@ body {
 }
 
 @media only screen and (max-width: 576px) {
+  .titulo {
+    font-size: 5vw;
+  }
+
   .carta {
-    width: 7rem;
-    height: 7rem;
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .carta--frente,
+  .carta--costas {
+    font-size: 20vw;
+  }
+
+  .carta--coletada {
+    font-size: 20vw;
   }
 
   .sideboard {
-    width: 40vw;
+    width: 60vw;
   }
 }

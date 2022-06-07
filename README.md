@@ -9,7 +9,7 @@
 > Para acessar a **GitHub Page** do projeto, clique [aqui](https://ygordimas.github.io/jogo-de-memoria/).
 ---
 
-# O que é?
+# Descrição Geral
 Um jogo de memória com 8 pares de cartas distribuídos em uma grid, acompanhado de um painel lateral e um contador de tentativas.
 
 ## Objetivos
@@ -17,13 +17,13 @@ Um jogo de memória com 8 pares de cartas distribuídos em uma grid, acompanhado
 O projeto é um ponto de partida para meu desenvolvimento profissional como programador. Através da criação e aperfeiçoamento da aplicação tive a oportunidade de colocar em prática conhecimentos de HTML5, CSS3 e JavaScript puro.
 O tutorial utilizado como base oferecia suporte para a criação da mecânica de jogo de memória. Como desafio pessoal, adicionei ao projeto um painel lateral responsável por exibir as cartas coletadas, um contador responsável por exibir a quantidade de tentativas falhas de combinações de pares de carta, e um painel com um botão que permite o reset do estado inicial do jogo após todas as cartas serem coletadas.
 
-## Tópicos de FrontEnd abordados com o projeto
+## Tópicos de FrontEnd abordados
 
 - CSS Grid
 - CSS Flex
 - Animações com CSS
 - Utilização de bibliotecas externas de fontes e ícones
-- Media queries
+- Responsividade (Media Queries)
 - Recuperação de elementos do DOM e criação e inserção de novos elementos na página através de funções de Javascript
 
 # Resultados

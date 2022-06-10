@@ -30,6 +30,7 @@ O tutorial utilizado como base oferecia suporte para a criação da mecânica de
 
 ### Layout geral
 ![Layout geral da página](https://raw.githubusercontent.com/ygordimas/jogo-de-memoria/main/raw/w1200.png)
+![Layout geral da página com painel para reiniciar o jogo](https://github.com/ygordimas/jogo-de-memoria/blob/main/raw/w1200_coletadas.png)
 ### Layout para dispositivos com até 992 pixels de largura
 ![Layout com breakpoint de 992px de largura](https://github.com/ygordimas/jogo-de-memoria/blob/main/raw/w992_sempainel.png)
 ![Layout com breakpoint de 992px de largura, sem painel lateral](https://github.com/ygordimas/jogo-de-memoria/blob/main/raw/w992_compainel.png)
